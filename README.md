@@ -71,6 +71,7 @@ TBA
 
 # Data Models
 
+<img src="docs/erd.jpeg">
 
 # Authors
 
