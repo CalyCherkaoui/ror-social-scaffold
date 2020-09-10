@@ -1,0 +1,43 @@
+<section class="users-section">
+<h3>Pending Requests</h3>
+  <ul class="users-list">
+    <% @pending_friends.each do |user| %>
+      <li>
+        Name: <%= user.name %>
+        <span class="profile-link">
+
+          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          
+          <% if current_user != User.find(user.id)%>
+            <% if show_add_friend(user) %>
+              <%= link_to 'Invite to friendship', {:controller => 'friendships', :action => 'create', :id => user.id}, method: :post, class: 'profile-link' %>
+            <% end %>
+
+            <% if show_already_friend(user) %>
+              <span> | you are friends</span>
+            <% end %>
+          <% end %>
+        </span>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<section class="users-section">
+<h3>Friend Requests</h3>
+  <ul class="users-list">
+    <% @friend_requests.each do |user| %>
+      <li>
+        Name: <%= user.name %>
+        <span class="profile-link">
+
+          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          
+            <%= link_to 'Add Friend', {:controller => 'friendships', :action => 'update', :id => user.id}, method: :put, class: 'profile-link' %> | 
+
+            <%= link_to 'Reject Friend', {:controller => 'friendships', :action => 'destroy', :id => user.id}, method: :delete, class: 'profile-link' %>
+        </span>
+      </li>
+    <% end %>
+  </ul>
+</section>
