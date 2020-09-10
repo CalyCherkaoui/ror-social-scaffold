@@ -4,8 +4,8 @@ class FriendshipsController < ApplicationController
     user = User.find(params[:id])
     if user
       @friendship = current_user.friendships.create(friend: user)
-      notice: "Friendship request created"
-      redirect_to: user_path(user)
+      
+      redirect_to user_path(user), notice: "Friendship request created"
     end
   end
 
