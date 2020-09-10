@@ -34,7 +34,15 @@ class User < ApplicationRecord
     friendship.save
   end
 
+  def reject_friend
+    
+  end
+
   def friend?(user)
     friends.include?(user)
+  end
+
+  def pending_friend?(user)
+    pending_friends.include?(user)
   end
 end
