@@ -7,6 +7,7 @@ class FriendshipsController < ApplicationController
   def create
     user = User.find(params[:id])
     return unless user
+
     @friendship = current_user.friendships.create(friend: user)
     redirect_to user_path(user), notice: 'Friendship request created'
   end
