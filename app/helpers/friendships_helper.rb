@@ -16,7 +16,10 @@ module FriendshipsHelper
       show_already_friend = '<span> | you are friends</span>' if show_already_friend(user)
     end
 
-    final_string = ('<li>'.html_safe + namespan.html_safe + link_to('See profile', user_path(user), class: 'profile-link')
-                    + show_friend.html_safe + show_already_friend.html_safe + '</span>'.html_safe)
+    link_to_see = link_to('See profile', user_path(user), class: 'profile-link')
+
+    final_string = namespan + link_to_see + show_friend + show_already_friend
+
+    "<li>#{final_string}</span><li>".html_safe
   end
 end
