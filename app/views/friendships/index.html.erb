@@ -18,8 +18,9 @@
             <% end %>
           <% end %>
         </span>
-      </li>
+      </li> 
     <% end %>
+    
   </ul>
 </section>
 
@@ -31,11 +32,11 @@
         Name: <%= user.name %>
         <span class="profile-link">
 
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %> |
           
-            <%= link_to 'Add Friend', {:controller => 'friendships', :action => 'update', :id => user.id}, method: :put, class: 'profile-link' %> | 
+          <%= link_to 'Accept Friend', {:controller => 'friendships', :action => 'update', :id => user.id}, method: :put, class: 'profile-link' %> | 
 
-            <%= link_to 'Reject Friend', {:controller => 'friendships', :action => 'destroy', :id => user.id}, method: :delete, class: 'profile-link' %>
+          <%= link_to 'Reject Friend', {:controller => 'friendships', :action => 'destroy', :id => user.id}, method: :delete, class: 'profile-link' %>
         </span>
       </li>
     <% end %>
