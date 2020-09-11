@@ -1,5 +1,4 @@
 class FriendshipsController < ApplicationController
-
   def index
     @pending_friends = current_user.pending_friends
     @friend_requests = current_user.friend_requests
@@ -9,8 +8,8 @@ class FriendshipsController < ApplicationController
     user = User.find(params[:id])
     if user
       @friendship = current_user.friendships.create(friend: user)
-      
-      redirect_to user_path(user), notice: "Friendship request created"
+
+      redirect_to user_path(user), notice: 'Friendship request created'
     end
   end
 
@@ -24,9 +23,7 @@ class FriendshipsController < ApplicationController
     redirect_to friendships_path
   end
 
-  def show
-
-  end
+  def show; end
 
   def destroy
     user_unfriended = User.find(params[:id])
