@@ -33,6 +33,8 @@ class FriendshipsController < ApplicationController
       user_unfriended.friend_requests.delete(current_user)
     end
 
+    # if we are already friend delete from friens array
+
     redirect_to friendships_path
   end
 end
