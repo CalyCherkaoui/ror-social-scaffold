@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'The user should be valid' do
-      user = User.new(name: 'usertest',email:'usertest@test.com', password: 'foobar', password_confirmation: 'foobar').save
+      user = User.new(name: 'usertest', email: 'usertest@test.com', password: 'foobar', password_confirmation: 'foobar').save
       expect(user).to eq(true)
     end
   end
