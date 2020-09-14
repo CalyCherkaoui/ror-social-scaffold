@@ -3,10 +3,16 @@ require 'rails_helper'
 RSpec.describe Comment, type: :model do
   context 'validations' do
     it 'content should be present' do
-      user1 = User.new(name: 'usertest', email: 'usertest@test.com', password: 'foobar', password_confirmation: 'foobar')
+      user1 = User.new(name: 'usertest',
+                       email: 'usertest@test.com',
+                       password: 'foobar',
+                       password_confirmation: 'foobar')
       user1.save
 
-      user2 = User.new(name: 'usertest2', email: 'usertest@test2.com', password: 'foobar2', password_confirmation: 'foobar2')
+      user2 = User.new(name: 'usertest2',
+                       email: 'usertest@test2.com',
+                       password: 'foobar2',
+                       password_confirmation: 'foobar2')
       user2.save
 
       post1 = Post.new(content: 'test post', user: user1)
