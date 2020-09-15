@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-RSpec.feature "Friendships", type: :feature do
+RSpec.feature 'Friendships', type: :feature do
   before :each do
     user1 = User.new(name: 'usertest',
-               email: 'usertest@test.com',
-               password: 'foobar',
-               password_confirmation: 'foobar')
+                     email: 'usertest@test.com',
+                     password: 'foobar',
+                     password_confirmation: 'foobar')
     user1.save
-    friend1= User.new(name: 'friendtest',
-               email: 'friendtest@test.com',
-               password: 'foobar',
-               password_confirmation: 'foobar')
+    friend1 = User.new(name: 'friendtest',
+                       email: 'friendtest@test.com',
+                       password: 'foobar',
+                       password_confirmation: 'foobar')
     friend1.save
     friendship1 = Friendship.new(user: user1, friend: friend1)
     friendship1.save
