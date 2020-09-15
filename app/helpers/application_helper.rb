@@ -15,4 +15,14 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def posts_errors
+    message = ''
+    if @post.errors.full_messages.any?
+      message = '<p class="errors">'
+      message += "Post could not be saved. #{@post.errors.full_messages.join('. ')}"
+      message += '</p>'
+    end
+    message.html_safe
+  end
 end
