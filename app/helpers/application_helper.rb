@@ -25,4 +25,16 @@ module ApplicationHelper
     end
     message.html_safe
   end
+
+  def show_add_friend(user)
+    return unless !current_user.friend?(user) &&
+                  !current_user.pending_friend?(user) && current_user != User.find(user.id)
+
+    link_to('Invite to friendship', { controller: 'friendships', action: 'create', id: user.id },
+            method: :post, class: 'profile-link')
+  end
+
+  def show_already_friend(user)
+    '<span> | you are friends</span>'.html_safe if current_user.friend?(user) && current_user != User.find(user.id)
+  end
 end

@@ -1,19 +1,9 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
 
-  <% if current_user != User.find(@user.id)%>
-
-    <% if show_add_friend(@user) %>
-      <%= link_to 'Invite to friendship', {:controller => 'friendships', :action => 'create', :id => @user.id}, method: :post, class: 'profile-link' %>
-    <% end %>
-
-    <% if show_already_friend(@user) %>
-      <span> | you are friends</span>
-    <% end %>
-
-  <%end%>
-
-  
+    <%= show_add_friend(@user) %>
+     
+    <%= show_already_friend(@user) %> 
 
   <article class="timeline">
     <h3>Recent posts:</h3>
