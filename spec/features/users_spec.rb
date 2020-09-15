@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+# rubocop:disable Metrics/BlockLength
 RSpec.feature 'Users', type: :feature do
   describe 'the sign in process' do
     before :each do
@@ -29,7 +29,6 @@ RSpec.feature 'Users', type: :feature do
       expect(page).to have_content 'Invalid Email or password'
     end
   end
-
   scenario 'user seding a friendship request to a friend that will accept it' do
     User.new(name: 'usertest',
              email: 'usertest@test.com',
@@ -51,4 +50,5 @@ RSpec.feature 'Users', type: :feature do
     visit friendships_path
     expect(page).to have_content('friendtest')
   end
+  # rubocop:enable Metrics/BlockLength
 end

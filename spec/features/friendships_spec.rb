@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+# rubocop:disable Metrics/BlockLength
 RSpec.feature 'Friendships', type: :feature do
   before :each do
     user1 = User.new(name: 'usertest',
@@ -22,7 +22,7 @@ RSpec.feature 'Friendships', type: :feature do
     click_button 'Log in'
     visit friendships_path
   end
-
+  # rubocop:enable Metrics/BlockLength
   scenario 'Friend accepting friendship request' do
     click_link 'Accept Friend'
     visit users_path
