@@ -15,4 +15,26 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def posts_errors
+    message = ''
+    if @post.errors.full_messages.any?
+      message = '<p class="errors">'
+      message += "Post could not be saved. #{@post.errors.full_messages.join('. ')}"
+      message += '</p>'
+    end
+    message.html_safe
+  end
+
+  def show_add_friend(user)
+    return unless !current_user.friend?(user) &&
+                  !current_user.pending_friend?(user) && current_user != User.find(user.id)
+
+    link_to('Invite to friendship', { controller: 'friendships', action: 'create', id: user.id },
+            method: :post, class: 'profile-link')
+  end
+
+  def show_already_friend(user)
+    '<span> | you are friends</span>'.html_safe if current_user.friend?(user) && current_user != User.find(user.id)
+  end
 end

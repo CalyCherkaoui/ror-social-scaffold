@@ -1,0 +1,37 @@
+<section class="users-section">
+<h3>Pending Requests</h3>
+  <ul class="users-list">
+    <% @pending_friends.each do |user| %>
+      <li>
+        Name: <%= user.name %>
+        <span class="profile-link">
+
+          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          
+          <%= show_add_friend(user) %>
+          <%= show_already_friend(user) %>
+        </span>
+      </li> 
+    <% end %>
+    
+  </ul>
+</section>
+
+<section class="users-section">
+<h3>Friend Requests</h3>
+  <ul class="users-list">
+    <% @friend_requests.each do |user| %>
+      <li>
+        Name: <%= user.name %>
+        <span class="profile-link">
+
+          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %> |
+          
+          <%= link_to 'Accept Friend', {:controller => 'friendships', :action => 'update', :id => user.id}, method: :put, class: 'profile-link' %> | 
+
+          <%= link_to 'Reject Friend', {:controller => 'friendships', :action => 'destroy', :id => user.id}, method: :delete, class: 'profile-link' %>
+        </span>
+      </li>
+    <% end %>
+  </ul>
+</section>
