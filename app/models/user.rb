@@ -12,7 +12,6 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id', dependent: :destroy
 
-
   def friends
     friends_array = friendships.map { |f| f.friend if f.confirmed }
     friends_array.concat(inverse_friendships.map { |f| f.user if f.confirmed })
