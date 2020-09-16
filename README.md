@@ -11,7 +11,6 @@
 
 TBA
 
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
@@ -22,37 +21,36 @@ Ruby: 2.6.3
 Rails: 5.2.3
 Postgres: >=9.5
 
-### Setup
+### Getting started : clone the repo
+
+To get a local copy of the repository please run the following commands on your terminal:
+
+```
+$ git clone git@github.com:CalyCherkaoui/ror-social-scaffold.git
+$ cd ror-social-scaffold
+$ yarn install --check-files
+```
+
+### Usage
 
 Instal gems with:
 
 ```
-bundle install
+$ bundle install
 ```
 
 Setup database with:
 
 ```
-   rails db:create
-   rails db:migrate
+$ rails db:create
+$ rails db:migrate
 ```
-
-### Github Actions
-
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
-
-### Usage
 
 Start server with:
 
 ```
-    rails server
+$ sudo service postgresql restart
+$ rails server
 ```
 
 Open `http://localhost:3000/` in your browser.
@@ -60,7 +58,7 @@ Open `http://localhost:3000/` in your browser.
 ### Run tests
 
 ```
-    rpsec --format documentation
+$ rpsec --format documentation
 ```
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
@@ -97,8 +95,6 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-
 ## 📝 License
 
-TBA
-
+MIT

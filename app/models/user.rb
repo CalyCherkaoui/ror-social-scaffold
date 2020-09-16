@@ -19,14 +19,12 @@ class User < ApplicationRecord
   end
 
   # Users who have yet to confirme friend requests
-  def pending_friends
-    friendships.map { |f| f.friend unless f.confirmed }.compact
-  end
+  has_many :pending_friendships, -> { where confirmed: nil }, class_name: 'Friendship', foreign_key: 'user_id'
+  has_many :pending_friends, through: :pending_friendships, source: :friend
 
   # Users who have requested to be friends
-  def friend_requests
-    inverse_friendships.map { |f| f.user unless f.confirmed }.compact
-  end
+  has_many :friendship_requests, -> { where confirmed: nil }, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :friend_requests, through: :friendship_requests, source: :user
 
   def confirm_friend(user)
     friendship = inverse_friendships.find { |f| f.user == user }
@@ -36,7 +34,7 @@ class User < ApplicationRecord
 
   def reject_friend(user)
     friendship = inverse_friendships.find { |f| f.user == user }
-    friendship.destory
+    friendship.destroy
   end
 
   def friend?(user)
